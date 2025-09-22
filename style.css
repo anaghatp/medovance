@@ -1,0 +1,252 @@
+/* ------------------- Global Styles ------------------- */
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #0d3a10;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("./Asset/Grids%201.svg");
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  place-content: center;
+}
+
+/* ------------------- Navbar ------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 12px 20px;
+  border: 1px solid #d3ddd6;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.75);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 30px rgba(0,0,0,0.05);
+  position: fixed;
+  top: 12px;
+  z-index: 10;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  animation: fade-down 0.5s 0.4s backwards;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.brand-logo { height: clamp(28px, 4.2vw, 50px); }
+
+.small-logo { height: clamp(98px, 60.8vw, 57px); }
+
+.muted {
+  color: #0f0f0f;
+  text-decoration: none;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+/* ------------------- Hero Section ------------------- */
+.hero {
+  max-width: 1200px;
+  margin: 36px auto 0 auto;
+  text-align: center;
+  padding: 0 16px 56px 16px;
+}
+
+.cta { margin-top: 16px;   animation: cta-fade-up 0.5s;}
+.cta-subtitle { margin-top: 5px; }
+.cta-headline {
+  position: relative;
+  display: block;
+  max-width: 920px;
+  margin: 12px auto 0 auto;
+  text-align: center;
+}
+
+/* help text wrap to a comfortable width on large screens */
+.cta-subtitle { max-width: 920px; margin: 0 auto; }
+
+/* ------------------- Logo Card ------------------- */
+.logo-card {
+  display: inline-block;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 10rem;
+  border-radius: 16px;
+  background: #ffffff;
+  position: relative;
+  animation: logo-fade-up 0.5s 0.1s backwards;
+}
+
+/* Soft green glow behind logo card */
+.logo-card::before {
+  content: "";
+  position: absolute;
+  inset: -22px -26px -22px -26px;
+  border-radius: 24px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(35,178,63,0.25) 0%, rgba(35,178,63,0.0) 70%);
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.hero-logo {
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  box-shadow: -41px -32px 39px -22px #a8dd70;
+}
+
+.logo-highlight {
+  position: absolute;
+  left: -8%;
+  top: -10%;
+  width: 15%;
+  opacity: 0.6;
+  border-radius: 50%;
+}
+
+/* ------------------- Text Styling ------------------- */
+.subtitle {
+  padding: 24px 0 0;
+  font-weight: 400;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.5em;
+  color: rgba(41,41,41,0.8);
+}
+
+.headline {
+  margin: 20px 0 0;
+  font-family: 'Gabarito', Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 8vw, 96px);
+  line-height: 1.2em;
+  background: radial-gradient(50% 75% at 48.7% 50%, rgb(32,146,32) 0%, rgb(65,161,35) 43%, rgb(119,202,44) 71%, rgb(133,214,47) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 12px rgba(35,178,63,0.25);
+  z-index: 3;
+}
+
+/* ------------------- Animations ------------------- */
+/* .fade-down {
+  opacity: 0;
+  transform: scale(0.85);
+  animation: fadeScaleUp 0.8s ease-out forwards;
+} */
+
+
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes logo-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes cta-fade-up {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeScaleUp {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.decor-highlight {
+  position: absolute;
+  right: 10%;
+  bottom: -8px;
+  width: 10%;
+  max-width: 116px;
+  opacity: 0;
+  animation: fadeArrowIn 1s ease-out 1.2s forwards;
+}
+
+@keyframes fadeArrowIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 0.3; transform: translateY(0); }
+}
+
+/* ------------------- Responsive Media Queries ------------------- */
+
+/* Large screens */
+@media (max-width: 1200px) {
+  .headline { font-size: 64px; }
+  .navbar { padding: 10px 18px; }
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+  .headline { font-size: 48px; }
+  .hero-logo { max-width: 19rem }
+  .navbar { gap: 8px; }
+  .nav-left, .nav-right { justify-content: space-between; }
+  .brand-logo { height: 36px; }
+  .small-logo { height: 32px; }
+  .muted { font-size: 0.82rem; }
+  .cta-subtitle { max-width: 640px; padding: 0 8px; }
+  .subtitle { font-size: 15px; }
+  .logo-highlight { width: 18%; left: -6%; top: -6%; }
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  .headline { font-size: 36px; line-height: 1.2; }
+  .cta-subtitle { max-width: 420px; padding: 0 10px; }
+  .subtitle { font-size: 14px; }
+  .small-logo { height: 60px; }
+  .brand-logo { height: 28px; }
+  .cta-headline { padding: 0 12px; }
+  .decor-highlight { width: 32px; right: 40%; bottom: -8px; }
+  .logo-highlight { width: 22%; left: -4%; top: -4%; }
+}
