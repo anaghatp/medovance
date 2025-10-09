@@ -37,7 +37,7 @@ body::before {
     width: 80%;
     padding: 0 2rem;
     border: 1px solid #d3ddd6;
-    border-radius: 1rem;
+    border-radius: 2rem;
     background: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -95,10 +95,9 @@ body::before {
 }
 .cta-headline {
     position: relative;
-    display: block;
-    max-width: 920px;
-    margin: 12px auto 0 auto;
-    text-align: center;
+  text-align: center;
+  padding: 2rem;
+    text-wrap: balance;
 }
 
 /* help text wrap to a comfortable width on large screens */
@@ -161,23 +160,25 @@ body::before {
 }
 
 .headline {
-    margin: 20px 0 0;
-    font-family: "Gabarito", Arial, sans-serif;
-    font-weight: 800;
-    font-size: clamp(36px, 8vw, 96px);
+  font-family: "Gabarito", Arial, sans-serif;
+    font-size: 120px;
+    font-weight: 700;
     line-height: 1.2em;
-    background: radial-gradient(
+background: radial-gradient(
         50% 75% at 48.7% 50%,
         rgb(32, 146, 32) 0%,
         rgb(65, 161, 35) 43%,
         rgb(119, 202, 44) 71%,
         rgb(133, 214, 47) 80%
     );
-    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-shadow: 0 2px 12px rgba(35, 178, 63, 0.25);
     z-index: 3;
+    position: relative;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* ------------------- Animations ------------------- */
@@ -231,13 +232,21 @@ body::before {
 }
 
 .decor-highlight {
-    position: absolute;
-    right: 10%;
-    bottom: -8px;
-    width: 10%;
-    max-width: 116px;
-    opacity: 0;
-    animation: fadeArrowIn 1s ease-out 1.2s forwards;
+        position: relative;
+        z-index: 1;
+    }
+
+.decor-highlight::before {
+    content: '';
+  position: absolute;
+  background: url('Asset/Arrow 2 1.svg') no-repeat center center;
+  background-size: contain;
+  width: 100px;
+    height: 70px;
+  bottom: -5px;
+  left: -68px;
+  z-index: -1;
+  opacity: 0.7; /* optional transparency */
 }
 
 @keyframes fadeArrowIn {
@@ -258,6 +267,10 @@ body::before {
     .headline {
         font-size: 64px;
     }
+    .decor-highlight::before{
+        height: 50px;
+        left: -58px;
+    }
     .muted {
         font-size: 0.9rem;
     }
@@ -267,6 +280,9 @@ body::before {
 @media (max-width: 768px) {
     .headline {
         font-size: 48px;
+    }
+    .decor-highlight::before {
+        height: 40px;
     }
     .hero-logo {
         max-width: 19rem;
@@ -320,6 +336,10 @@ body::before {
         max-width: 420px;
         padding: 0 10px;
     }
+    .decor-highlight::before {
+        height: 30px;
+        left: -56px;
+    }
     .subtitle {
         font-size: 14px;
     }
@@ -335,11 +355,7 @@ body::before {
     .cta-headline {
         padding: 0 12px;
     }
-    .decor-highlight {
-        width: 32px;
-        right: 40%;
-        bottom: -8px;
-    }
+    
     .logo-highlight {
         width: 22%;
         left: -4%;
